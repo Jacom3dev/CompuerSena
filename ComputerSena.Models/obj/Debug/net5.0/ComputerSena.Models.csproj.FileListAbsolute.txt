@@ -1,0 +1,12 @@
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\bin\Debug\net5.0\ComputerSena.Models.deps.json
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\bin\Debug\net5.0\ComputerSena.Models.dll
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\bin\Debug\net5.0\ref\ComputerSena.Models.dll
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\bin\Debug\net5.0\ComputerSena.Models.pdb
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ComputerSena.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ComputerSena.Models.AssemblyInfoInputs.cache
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ComputerSena.Models.AssemblyInfo.cs
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ComputerSena.Models.csproj.CoreCompileInputs.cache
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ComputerSena.Models.dll
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ref\ComputerSena.Models.dll
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ComputerSena.Models.pdb
+C:\Users\57311\OneDrive\Escritorio\Asp .net\ComputerSena\ComputerSena.Models\obj\Debug\net5.0\ComputerSena.Models.csprojAssemblyReference.cache

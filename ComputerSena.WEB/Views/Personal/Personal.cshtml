@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ComputerSena.Models.Entidades.Usuario>
+
+<div class="row">
+    <div class="col mt-3">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Nombre</th>
+                        <th>Tipo Documento</th>
+                        <th>Correo</th>
+                        <th>Cargo</th>
+                        <th>Rol</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var usuario in Model)
+                    {
+                        <tr>
+                            <td>@usuario.Documento</td>
+                            <td>@usuario.Nombre @usuario.Apellido</td>
+                            <td>@usuario.TipoDocumento.Nombre</td>
+                            <td>@usuario.Email</td>
+                            <td>@usuario.Cargo</td>
+                            <td>@usuario.Rol.Nombre</td>
+                            <td>
+                                @if (usuario.Estado)
+                                {
+                                    <span class="badge badge-warning">Activo</span> }
+                                else
+                                {
+                                    <span class="badge badge-danger">deshabilitado</span>}
+                            </td>
+                            <td>
+
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <a class="text-primary" href="javascript:mostrarModal('@Url.Action("EditarUsuario","Usuarios",new {ID=usuario.Id},Context.Request.Scheme)','Editar usuario')"><i title="Editar" class="fas fa-user-edit"></i></a>
+
+                                    @if (usuario.Estado)
+                                    {
+                                        <a class="text-danger" href="javascript:cambiarEstado('@Url.Action("EditarUsuario","Usuarios",new {ID=usuario.Id },Context.Request.Scheme)')"><i title="Deshabilitar usuario" class="fas fa-user-slash"></i></a> }
+                                    else
+                                    {
+                                        <a class="text-warning" href="javascript:cambiarEstado('@Url.Action("EditarUsuario","Usuarios",new{ID=usuario.Id },Context.Request.Scheme)')"><i title="Habilitar usuario" class="fas fa-user-check"></i></a>}
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/DataTable/tabla.js"></script>
+}
+

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ComputerSena.Models.Entidades.EntradaSalida>
+
+<div class="row">
+    <div class="col mt-3">
+        <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Elemento</th>
+                            <th>Color</th>
+                            <th>Serial</th>
+                            <th>Fecha De entrada</th>
+                            <th>Fecha de salida</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var salidas in Model)
+                        {
+                        <tr>
+                            <td>@salidas.Nombre</td>
+                            <td>@salidas.Documento</td>
+                            <td>@salidas.Elemento</td>
+                            <td>@salidas.Color</td>
+                            <td>@salidas.Serial</td>
+                            <td>@salidas.FechaEntrada</td>
+                            <td>@salidas.FechaSalida</td>
+
+                            <td>
+                                @if (salidas.Estado)
+                                {
+                                    <span class="badge badge-warning">Ingresado.</span> }
+                                else
+                                {
+                                    <span class="badge badge-danger">Salido.</span>}
+                            </td>
+                            <td>
+
+                                <div class="d-flex justify-content-center flex-wrap">
+                                    @if (salidas.Estado)
+                                    {
+                                        <a class="text-danger" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","EntradasSalidas",new {id=salidas.EntradaSalidaID },Context.Request.Scheme)')"><i title="Deshabilitar cliente" class="fas fa-user-slash"></i></a> }
+                                    else
+                                    {
+                                        <a class="text-warning" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","EntradasSalidas",new{id=salidas.EntradaSalidaID},Context.Request.Scheme)')"><i title="Habilitar cliente" class="fas fa-user-check"></i></a>}
+                                </div>
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/DataTable/tabla.js"></script>
+}

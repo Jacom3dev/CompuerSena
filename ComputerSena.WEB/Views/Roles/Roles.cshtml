@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ComputerSena.Models.Entidades.Rol>
+<div class="row">
+    <div class="col mt-3">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
+                <thead>
+                    <tr>
+                        <th>Rol</th>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var rol in Model)
+                    {
+                        <tr>
+                            <td>@rol.RolID</td>
+                            <td>@rol.Nombre</td>
+                            <td>
+                                @if (rol.Estado)
+                                {
+                                    <span class="badge badge-warning">Activo</span> }
+                                else
+                                {
+                                    <span class="badge badge-danger">deshabilitado</span>}
+                            </td>
+                            <td>
+
+                                <div class="d-flex justify-content-between flex-wrap">
+                                    <a class="text-primary" href="javascript:mostrarModal('@Url.Action("EditarRol","Roles",new {id=rol.RolID},Context.Request.Scheme)','Editar cliente')"><i title="Editar" class="fas fa-user-edit"></i></a>
+
+                                    @if (rol.Estado)
+                                    {
+                                        <a class="text-danger" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","Roles",new {id=rol.RolID },Context.Request.Scheme)')"><i title="Deshabilitar cliente" class="fas fa-user-slash"></i></a> }
+                                    else
+                                    {
+                                        <a class="text-warning" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","Roles",new{id=rol.RolID},Context.Request.Scheme)')"><i title="Habilitar cliente" class="fas fa-user-check"></i></a>}
+                                </div>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/DataTable/tabla.js"></script>
+}

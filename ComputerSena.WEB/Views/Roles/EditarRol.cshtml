@@ -1,0 +1,19 @@
+﻿@model ComputerSena.Models.Entidades.Rol
+@{
+    Layout = null;
+}
+<form method="post" class="bg-white rounded col-12" asp-action="EditarRol" onsubmit="return jQueryAjaxPost(this, 'Editar', '¿Desea Editar el rol?')" autocomplete="off">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="RolID">
+    <input type="hidden" asp-for="Estado">
+
+    <div class="form-group row">
+        <div class="col">
+            <input asp-for="Nombre" class="form-control" placeholder="Nombre rol"/>
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+    <input type="submit" class="btn btn-info" name="name" value="Actulizar" />
+</form>
+
+
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

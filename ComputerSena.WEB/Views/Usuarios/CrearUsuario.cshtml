@@ -1,0 +1,68 @@
+﻿@model ComputerSena.Servicios.DTOS.RegistrarUsuarioDto
+@{
+    Layout = null;
+}
+
+<form method="POST" asp-action="CrearUsuario" class="bg-white rounded " onsubmit="return jQueryAjaxPost(this, 'Crear Usuario', '¿Desea crear el Usuario?')">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group row">
+        <div class="col">
+            <input asp-for="Nombre" class="form-control" placeholder="Nombre Usuario">
+            <span asp-validation-for="Nombre" class="text-danger"></span>
+        </div>
+        <div class="col">
+            <input asp-for="Apellido" class="form-control" placeholder="Apellido Usuario">
+            <span asp-validation-for="Apellido" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <select asp-items="@ViewBag.tiposDocumentos" asp-for="TipoDocumentoID" class="form-control">
+                <option disabled selected>Tipo Documento</option>
+            </select>
+            <span asp-validation-for="TipoDocumentoID" class="text-danger"></span>
+        </div>
+        <div class="col">
+            <input asp-for="Documento" class="form-control" placeholder="Documento Usuario">
+            <span asp-validation-for="Documento" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col">
+            <input asp-for="Cargo" class="form-control" placeholder="Cargo Usuario">
+            <span asp-validation-for="Cargo" class="text-danger"></span>
+        </div>
+        <div class="col">
+
+            <select asp-items="@ViewBag.roles" asp-for="RolID" class="form-control">
+                <option disabled selected>Rol</option>
+            </select>
+            <span asp-validation-for="RolID" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col">
+            <input asp-for="Email" class="form-control">
+            <span asp-validation-for="Email" class="text-danger error"></span>
+        </div>
+        
+    </div>
+    <div class="form-group row">
+        <div class="col">
+            <input asp-for="Password" class="form-control">
+            <span asp-validation-for="Password" class="text-danger error"></span>
+        </div>
+        <div class="col">
+            <input asp-for="ConfirmarPassword" class="form-control">
+            <span asp-validation-for="ConfirmarPassword" class="text-danger error"></span>
+        </div>
+    </div>
+
+
+
+
+    <input type="submit" class="btn btn-info" name="name" value="Registrar Usuario" />
+</form>
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

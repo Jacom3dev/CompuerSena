@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ComputerSena.Models.Entidades.EntradaSalida>
+
+<div class="row">
+    <div class="col mt-3">
+        <a onclick="mostrarModal('@Url.Action("CrearEntrada","Entradas",null,Context.Request.Scheme)','Agregar entrada')" class="btn btn-dark mb-3" style="color:white"><i class="fas fa-user-plus mr-2"></i>registrar Entrada.</a>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Documento</th>
+                            <th>Elemento</th>
+                            <th>Color</th>
+                            <th>Serial</th>
+                            <th>Fecha De entrada</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var entrada in Model)
+                        {
+                            <tr>
+                                <td>@entrada.Nombre</td>
+                                <td>@entrada.Documento</td>
+                                <td>@entrada.Elemento</td>
+                                <td>@entrada.Color</td>
+                                <td>@entrada.Serial</td>
+                                <td>@entrada.FechaEntrada</td>
+                                <td>
+                                    @if (entrada.Estado)
+                                    {
+                                        <span class="badge badge-warning">Ingresado.</span> }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Salido.</span>}
+                                </td>
+                                <td>
+
+                                    <div class="d-flex justify-content-center flex-wrap">
+                                        @if (entrada.Estado)
+                                        {
+                                            <a class="text-danger" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","EntradasSalidas",new {id=entrada.EntradaSalidaID },Context.Request.Scheme)')"><i title="Deshabilitar cliente" class="fas fa-user-slash"></i></a> }
+                                        else
+                                        {
+                                            <a class="text-warning" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","EntradasSalidas",new{id=entrada.EntradaSalidaID},Context.Request.Scheme)')"><i title="Habilitar cliente" class="fas fa-user-check"></i></a>}
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/DataTable/tabla.js"></script>
+}

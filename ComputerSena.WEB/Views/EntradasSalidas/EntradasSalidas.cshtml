@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ComputerSena.Models.Entidades.EntradaSalida>
+
+<div class="row">
+    <div class="col mt-3">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" cellpadding="0" id="tabla">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Documento</th>
+                        <th>Elemento</th>
+                        <th>Color</th>
+                        <th>Serial</th>
+                        <th>Fecha De entrada</th>
+                        <th>Fecha de salida</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var entradaSalida in Model)
+                    {
+                    <tr>
+                        <td>@entradaSalida.Nombre</td>
+                        <td>@entradaSalida.Documento</td>
+                        <td>@entradaSalida.Elemento</td>
+                        <td>@entradaSalida.Color</td>
+                        <td>@entradaSalida.Serial</td>
+                        <td>@entradaSalida.FechaEntrada</td>
+                        <td>@entradaSalida.FechaSalida</td>
+                        <td>
+                            @if (entradaSalida.Estado)
+                            {
+                                <span class="badge badge-warning">Ingresado.</span> }
+                            else
+                            {
+                                <span class="badge badge-danger">Salido.</span>}
+                        </td>
+                        <td>
+
+                            <div class="d-flex justify-content-between flex-wrap">
+                                <a class="text-primary" href="javascript:mostrarModal('@Url.Action("ActualizarEntradaSalida","EntradasSalidas",new { id =entradaSalida.EntradaSalidaID},Context.Request.Scheme)','Editar cliente')"><i title="Editar" class="fas fa-user-edit"></i></a>
+
+                                @if (entradaSalida.Estado)
+                                {
+                                    <a class="text-danger" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","EntradasSalidas",new {id=entradaSalida.EntradaSalidaID },Context.Request.Scheme)')"><i title="Deshabilitar cliente" class="fas fa-user-slash"></i></a> }
+                                else
+                                {
+                                    <a class="text-warning" href="javascript:cambiarEstado('@Url.Action("CambiarEstado","EntradasSalidas",new{id=entradaSalida.EntradaSalidaID},Context.Request.Scheme)')"><i title="Habilitar cliente" class="fas fa-user-check"></i></a>}
+                            </div>
+                        </td>
+
+                    </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/DataTable/tabla.js"></script>
+}
+
